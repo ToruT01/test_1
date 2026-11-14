@@ -428,7 +428,7 @@
         </div>
 
         <!-- =================================================
-             TAB 03: BÀN LÀM VIỆC (SPATIAL WORKSPACE CANVAS)
+             TAB 03: BÀN LÀM VIỆC (SPATIAL WORKSPACE CANVAS - 3 VISUAL CARDS WITH IMAGES & LINKS)
              ================================================= -->
         <div id="view-desk" class="hidden py-10 lg:py-14 space-y-8">
             <div class="pb-6 hairline-b flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -439,56 +439,108 @@
                     </h1>
                 </div>
                 <div class="flex items-center gap-2 font-mono text-xs">
-                    <button type="button" onclick="tidyWorkspaceDesk()" class="px-4 py-2 bg-stone text-ink hover:bg-sand rounded-lg hairline-border cursor-pointer">
-                        ⊞ Sắp Xếp Gọn
+                    <button type="button" onclick="tidyWorkspaceDesk()" class="px-4 py-2 bg-stone text-ink hover:bg-sand rounded-lg hairline-border transition-colors cursor-pointer">
+                        ⊞ Sắp Xếp Gọn (Mặc Định)
                     </button>
-                    <button type="button" onclick="scatterWorkspaceDesk()" class="px-4 py-2 bg-stone text-ink hover:bg-sand rounded-lg hairline-border cursor-pointer">
-                        ⚄ Ngẫu Nhiên
+                    <button type="button" onclick="scatterWorkspaceDesk()" class="px-4 py-2 bg-stone text-ink hover:bg-sand rounded-lg hairline-border transition-colors cursor-pointer">
+                        ⚄ Xáo Trộn Ngẫu Nhiên
                     </button>
                 </div>
             </div>
 
-            <div id="desk-canvas" class="relative h-[560px] bg-stone/60 rounded-xl hairline-border desk-grid overflow-hidden shadow-inner">
-                <div class="absolute top-3 left-4 font-mono text-[10px] text-muted uppercase tracking-widest pointer-events-none">
-                    KÉO THẢ CÁC THẺ BÊN DƯỚI · TỰ ĐỘNG LƯU VỊ TRÍ (LOCALSTORAGE)
+            <div id="desk-canvas" class="relative h-[620px] bg-stone/60 rounded-xl hairline-border desk-grid overflow-hidden shadow-inner">
+                <div class="absolute top-3.5 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-muted uppercase tracking-widest pointer-events-none z-10">
+                    <span>KÉO THẢ 3 THẺ DỰ ÁN BÊN DƯỚI · TỰ ĐỘNG LƯU VỊ TRÍ</span>
+                    <span class="hidden sm:inline text-olive">● 3 ARTIFACTS ACTIVE</span>
                 </div>
 
-                <div id="artifact-1" style="top: 50px; left: 40px;" class="desk-card absolute w-72 p-5 bg-washi rounded-xl hairline-border shadow-md cursor-grab">
-                    <div class="flex justify-between font-mono text-[10px] text-clay mb-1">
-                        <span>NODE-01 // STREAM ENGINE</span>
-                        <span class="text-olive">● ACTIVE</span>
+                <!-- Card 01: Nexus Data Pipeline (With Image + Open Link) -->
+                <div id="artifact-1" style="top: 52px; left: 36px;" class="desk-card absolute w-80 bg-washi rounded-xl hairline-border shadow-md cursor-grab overflow-hidden">
+                    <div class="relative h-40 w-full bg-stone overflow-hidden hairline-b">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x320/1C1B19/ECEAE4?text=NEXUS+PIPELINE';"
+                             alt="Nexus Data Pipeline"
+                             class="w-full h-full object-cover pointer-events-none select-none">
+                        <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-ink/85 text-washi font-mono text-[10px] font-semibold">
+                            01 // STREAM ENGINE
+                        </span>
+                        <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-washi/90 text-olive font-mono text-[10px] font-semibold hairline-border">
+                            &lt; 12ms p99
+                        </span>
                     </div>
-                    <h4 class="font-sans text-base font-bold text-ink">Nexus Event Pipeline</h4>
-                    <p class="text-xs text-muted mt-1 leading-relaxed">Xử lý luồng dữ liệu thời gian thực bằng Rust & Apache Kafka với độ trễ p99 dưới 12ms.</p>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <h4 class="font-sans text-base font-bold text-ink">Nexus Data Pipeline</h4>
+                            <p class="text-xs text-muted mt-1 leading-relaxed line-clamp-2">
+                                Động cơ xử lý luồng sự kiện thời gian thực bằng Rust & Apache Kafka với kiến trúc Zero-copy.
+                            </p>
+                        </div>
+                        <div class="pt-2.5 hairline-t flex items-center justify-between font-mono text-[11px]">
+                            <span class="text-muted">Rust · Kafka · gRPC</span>
+                            <a href="https://github.com/" target="_blank" rel="noopener" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()" class="px-2.5 py-1 bg-ink text-washi hover:bg-clay rounded-md text-[10px] uppercase tracking-wider font-semibold transition-colors cursor-pointer">
+                                Mở Link ↗
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="artifact-2" style="top: 50px; left: 350px;" class="desk-card absolute w-72 p-5 bg-washi rounded-xl hairline-border shadow-md cursor-grab">
-                    <div class="flex justify-between font-mono text-[10px] text-clay mb-1">
-                        <span>NODE-02 // AUTH CORE</span>
-                        <span class="text-olive">● SECURE</span>
+                <!-- Card 02: Aura Identity Auth (With Image + Open Link) -->
+                <div id="artifact-2" style="top: 52px; left: 380px;" class="desk-card absolute w-80 bg-washi rounded-xl hairline-border shadow-md cursor-grab overflow-hidden">
+                    <div class="relative h-40 w-full bg-stone overflow-hidden hairline-b">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x320/3A5F6F/FFFFFF?text=AURA+IDENTITY';"
+                             alt="Aura Identity Auth"
+                             class="w-full h-full object-cover pointer-events-none select-none">
+                        <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-ink/85 text-washi font-mono text-[10px] font-semibold">
+                            02 // AUTH CORE
+                        </span>
+                        <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-washi/90 text-olive font-mono text-[10px] font-semibold hairline-border">
+                            99.99% SLA
+                        </span>
                     </div>
-                    <h4 class="font-sans text-base font-bold text-ink">Aura OIDC Identity</h4>
-                    <p class="text-xs text-muted mt-1 leading-relaxed">Xác thực tập trung OAuth2/OIDC kết hợp Redis Cluster thu hồi phiên O(1).</p>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <h4 class="font-sans text-base font-bold text-ink">Aura Identity Auth</h4>
+                            <p class="text-xs text-muted mt-1 leading-relaxed line-clamp-2">
+                                Hệ thống xác thực OIDC/OAuth2 tập trung kết hợp Redis Cluster thu hồi phiên truy cập O(1).
+                            </p>
+                        </div>
+                        <div class="pt-2.5 hairline-t flex items-center justify-between font-mono text-[11px]">
+                            <span class="text-muted">Go · Redis · WebAuthn</span>
+                            <a href="https://github.com/" target="_blank" rel="noopener" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()" class="px-2.5 py-1 bg-ink text-washi hover:bg-clay rounded-md text-[10px] uppercase tracking-wider font-semibold transition-colors cursor-pointer">
+                                Mở Link ↗
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div id="artifact-3" style="top: 230px; left: 40px;" class="desk-card absolute w-72 p-5 bg-washi rounded-xl hairline-border shadow-md cursor-grab">
-                    <div class="flex justify-between font-mono text-[10px] text-clay mb-1">
-                        <span>NODE-03 // AUDIO ENGINE</span>
-                        <span class="text-olive">● LAVALINK BRIDGE</span>
+                <!-- Card 03: Vortex Cache Mesh (With Image + Open Link) -->
+                <div id="artifact-3" style="top: 52px; left: 724px;" class="desk-card absolute w-80 bg-washi rounded-xl hairline-border shadow-md cursor-grab overflow-hidden">
+                    <div class="relative h-40 w-full bg-stone overflow-hidden hairline-b">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=80"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x320/C85A32/FFFFFF?text=VORTEX+MESH';"
+                             alt="Vortex Cache Mesh"
+                             class="w-full h-full object-cover pointer-events-none select-none">
+                        <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-ink/85 text-washi font-mono text-[10px] font-semibold">
+                            03 // CACHE MESH
+                        </span>
+                        <span class="absolute top-2.5 right-2.5 px-2 py-0.5 rounded bg-washi/90 text-olive font-mono text-[10px] font-semibold hairline-border">
+                            2.4ms Latency
+                        </span>
                     </div>
-                    <h4 class="font-sans text-base font-bold text-ink">Serene Audio #0206</h4>
-                    <p class="text-xs text-muted mt-1 leading-relaxed">Bắc cầu tự động Spotify sang YouTube Full Audio, hỗ trợ bóc tách Album & tự xóa Queue.</p>
-                </div>
-
-                <div id="artifact-4" style="top: 230px; left: 350px;" class="desk-card absolute w-72 p-5 bg-washi rounded-xl hairline-border shadow-md cursor-grab">
-                    <div class="flex justify-between font-mono text-[10px] text-clay mb-1">
-                        <span>NODE-04 // TELEMETRY</span>
-                        <span class="text-olive">● MONITORED</span>
-                    </div>
-                    <h4 class="font-sans text-base font-bold text-ink">Trạng Thái Hạ Tầng</h4>
-                    <div class="mt-2 pt-2 hairline-t font-mono text-[11px] space-y-1 text-muted">
-                        <div class="flex justify-between"><span>Memory Alloc:</span><span class="text-ink">Zero-Copy</span></div>
-                        <div class="flex justify-between"><span>Audio Bridge:</span><span class="text-olive">Full Track (No 30s Cap)</span></div>
+                    <div class="p-4 space-y-3">
+                        <div>
+                            <h4 class="font-sans text-base font-bold text-ink">Vortex Cache Mesh</h4>
+                            <p class="text-xs text-muted mt-1 leading-relaxed line-clamp-2">
+                                Lưới bộ nhớ đệm phân tán đa vùng đồng thuận qua thuật toán Raft, giảm 85% tải DB chính.
+                            </p>
+                        </div>
+                        <div class="pt-2.5 hairline-t flex items-center justify-between font-mono text-[11px]">
+                            <span class="text-muted">C++ · WASM · Envoy</span>
+                            <a href="https://github.com/" target="_blank" rel="noopener" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()" class="px-2.5 py-1 bg-ink text-washi hover:bg-clay rounded-md text-[10px] uppercase tracking-wider font-semibold transition-colors cursor-pointer">
+                                Mở Link ↗
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -506,15 +558,15 @@
                     </h1>
                 </div>
                 <p class="font-mono text-xs text-muted max-w-lg">
-                    4 công cụ độc lập: Bot Nhạc Đa Nền Tảng (Spotify ➔ YouTube Full Audio Bridge, tự tách Album & tự xóa bài khi phát xong), Trạm Mật Mã, Trạm QR & Đồng Hồ Đếm Ngược.
+                    4 công cụ độc lập: Bot Nhạc Đa Nền Tảng (YouTube, YT Music, SoundCloud — tự quét Album/Playlist & tự xóa bài khi phát xong), Trạm Mật Mã, Trạm QR & Đồng Hồ Đếm Ngược.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
                 <!-- =========================================================
-                     UTILITY 01: DISCORD-STYLE MULTI-PLATFORM AUDIO BOT
-                     (SPOTIFY -> YOUTUBE FULL AUDIO BRIDGE + EPHEMERAL QUEUE)
+                     UTILITY 01: MULTI-PLATFORM AUDIO BOT (NO SPOTIFY)
+                     (YOUTUBE + YT MUSIC + SOUNDCLOUD + ALBUM SCANNER + AUTO-DELETE QUEUE)
                      ========================================================= -->
                 <div id="audio-bot-card" class="lg:col-span-6 bg-stone p-6 rounded-xl hairline-border flex flex-col justify-between space-y-4">
                     <div>
@@ -522,7 +574,7 @@
                             <div class="flex items-center space-x-1.5">
                                 <span class="px-2 py-0.5 rounded bg-ink text-washi font-bold text-[9px]">BOT</span>
                                 <span class="text-clay font-semibold">SERENE AUDIO#0206</span>
-                                <span id="bot-bridge-badge" class="px-2 py-0.5 rounded bg-washi text-olive hairline-border text-[9px]">LAVALINK FULL-TRACK BRIDGE</span>
+                                <span id="bot-bridge-badge" class="px-2 py-0.5 rounded bg-washi text-olive hairline-border text-[9px]">MULTI-ENGINE SCANNER</span>
                             </div>
                             <span id="bot-status-pill" class="text-muted flex items-center space-x-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-muted"></span>
@@ -530,18 +582,18 @@
                             </span>
                         </div>
 
-                        <h3 class="font-sans text-xl font-bold text-ink">Universal Audio & Album Bot (Full Track)</h3>
+                        <h3 class="font-sans text-xl font-bold text-ink">YouTube, YT Music & SoundCloud Audio Bot</h3>
                         <p class="text-xs text-muted mt-0.5 leading-relaxed">
-                            Nhận link <strong>Spotify, YouTube, YT Music, SoundCloud, MP3</strong> hoặc <strong>Tên bài hát</strong>. Link Spotify được <strong>bắc cầu tự động sang luồng Full Audio (100% cả bài, không bị cắt 30s)</strong>. Tự lấy toàn bộ bài trong Album và <strong>tự xóa bài khi chạy xong</strong> (trừ khi bật Loop).
+                            Dán link bài lẻ hoặc <strong>Album / Playlist (YouTube, YT Music, SoundCloud, MP3)</strong>. Hệ thống tự động quét toàn bộ bài hát trong Album nạp vào Queue và <strong>tự xóa bài ngay khi phát xong</strong> (trừ khi bật Loop).
                         </p>
 
                         <!-- Platform Tags & Rescue Controls -->
                         <div class="mt-3 pt-2.5 hairline-t flex flex-wrap items-center justify-between gap-2 font-mono text-[10px]">
                             <div class="flex flex-wrap items-center gap-1">
-                                <span class="px-1.5 py-0.5 rounded bg-washi text-[#4E8752] hairline-border font-semibold">SPOTIFY ⚡ FULL</span>
-                                <span class="px-1.5 py-0.5 rounded bg-washi text-[#D94E41] hairline-border">YOUTUBE</span>
-                                <span class="px-1.5 py-0.5 rounded bg-washi text-clay hairline-border">YT MUSIC</span>
-                                <span class="px-1.5 py-0.5 rounded bg-washi text-olive hairline-border">SOUNDCLOUD</span>
+                                <span class="px-1.5 py-0.5 rounded bg-washi text-[#D94E41] hairline-border font-semibold">YOUTUBE</span>
+                                <span class="px-1.5 py-0.5 rounded bg-washi text-clay hairline-border font-semibold">YT MUSIC</span>
+                                <span class="px-1.5 py-0.5 rounded bg-washi text-olive hairline-border font-semibold">SOUNDCLOUD</span>
+                                <span class="px-1.5 py-0.5 rounded bg-washi text-muted hairline-border">DIRECT MP3/M4A</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <button type="button" onclick="cycleDirectAudioStreamNode()" class="px-2 py-1 rounded bg-washi text-ink hover:bg-sand hairline-border cursor-pointer" title="Đổi máy chủ giải mã âm thanh nếu bài hát bị nghẽn">
@@ -558,13 +610,13 @@
                     <form onsubmit="handleBotPlaySubmit(event)" class="flex flex-col sm:flex-row gap-2 font-mono text-xs">
                         <div class="flex-grow flex items-center bg-washi rounded-lg hairline-border px-3 py-2.5 focus-within:border-clay">
                             <span class="text-clay font-bold mr-2 select-none">/play</span>
-                            <input type="text" id="bot-play-input" placeholder="Dán link Spotify (Track/Album), YouTube, SoundCloud hoặc gõ tên bài hát..." class="w-full bg-transparent text-ink focus:outline-none text-xs">
+                            <input type="text" id="bot-play-input" placeholder="Dán link YouTube, YT Music (Track/Playlist), SoundCloud hoặc tên bài hát..." class="w-full bg-transparent text-ink focus:outline-none text-xs">
                         </div>
                         <div class="flex gap-1.5 shrink-0">
                             <button type="submit" id="bot-submit-btn" class="px-4 py-2.5 bg-ink text-washi hover:bg-clay rounded-lg uppercase tracking-wider text-[11px] font-semibold transition-colors cursor-pointer">
                                 ▶ Phát Ngay
                             </button>
-                            <button type="button" onclick="handleBotQueueAppend()" class="px-3 py-2.5 bg-washi text-ink hover:bg-sand rounded-lg hairline-border text-[11px] font-medium transition-colors cursor-pointer" title="Thêm bài hoặc cả Album vào cuối hàng chờ">
+                            <button type="button" onclick="handleBotQueueAppend()" class="px-3 py-2.5 bg-washi text-ink hover:bg-sand rounded-lg hairline-border text-[11px] font-medium transition-colors cursor-pointer" title="Quét và thêm bài hoặc cả Album vào cuối hàng chờ">
                                 + Queue
                             </button>
                         </div>
@@ -576,7 +628,7 @@
                         <div class="absolute -top-2 -left-2 w-[200px] h-[200px] opacity-[0.002] pointer-events-none overflow-hidden select-none" style="z-index:0;" aria-hidden="true">
                             <div id="yt-audio-bridge-mount"></div>
                         </div>
-                        <!-- Hidden HTML5 Audio Element for Direct Stream & Piped/Invidious Full Audio -->
+                        <!-- Hidden HTML5 Audio Element -->
                         <audio id="bot-html5-audio" preload="auto" crossorigin="anonymous" class="hidden"></audio>
 
                         <div class="flex items-center gap-4 relative z-10">
@@ -586,11 +638,11 @@
                                 <div class="w-4 h-4 rounded-full bg-washi border border-ink absolute pointer-events-none"></div>
                             </div>
 
-                            <!-- Track Title & Bridge Telemetry -->
+                            <!-- Track Title & Telemetry -->
                             <div class="flex-grow min-w-0">
                                 <div class="flex items-center justify-between gap-2">
                                     <span id="bot-track-author" class="font-mono text-[10px] uppercase tracking-widest text-olive font-semibold truncate">
-                                        SPOTIFY & YOUTUBE FULL AUDIO BRIDGE
+                                        YOUTUBE · YT MUSIC · SOUNDCLOUD
                                     </span>
                                     <div class="flex items-end space-x-1 h-4 shrink-0">
                                         <span class="eq-bar eq-bar-1"></span>
@@ -601,17 +653,17 @@
                                 </div>
 
                                 <h4 id="bot-track-title" class="font-sans text-sm sm:text-base font-bold text-ink truncate mt-0.5">
-                                    Chưa có bài hát — Dán link Spotify / YouTube / SoundCloud vào /play
+                                    Chưa có bài hát — Dán link YouTube / YT Music / SoundCloud vào /play
                                 </h4>
 
                                 <div class="flex items-center justify-between font-mono text-[10px] text-muted mt-1">
-                                    <span id="bot-engine-log" class="truncate">CHẾ ĐỘ: PHÁT HẾT CẢ BÀI & TỰ XÓA KHỎI QUEUE</span>
-                                    <span id="bot-node-indicator" class="text-olive shrink-0 ml-2">NODE: AUTO</span>
+                                    <span id="bot-engine-log" class="truncate">SẴN SÀNG QUÉT TRACK & ALBUM/PLAYLIST</span>
+                                    <span id="bot-node-indicator" class="text-olive shrink-0 ml-2">SCANNER: OK</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Hidden SoundCloud Bridge Mount (Used when playing SoundCloud links) -->
+                        <!-- SoundCloud Bridge Drawer (Used when playing SoundCloud links) -->
                         <div id="sc-bridge-drawer" class="hidden pt-2 hairline-t relative z-10">
                             <div id="sc-bridge-mount" class="w-full rounded overflow-hidden hairline-border"></div>
                         </div>
@@ -740,7 +792,7 @@
                         <div class="sm:col-span-7 space-y-3 font-mono text-xs">
                             <div>
                                 <label class="block text-[10px] text-muted uppercase mb-1">NHẬP LINK HOẶC VĂN BẢN:</label>
-                                <textarea id="qr-raw-input" rows="3" oninput="updateQrAndSanitizeUrl()" class="w-full bg-stone p-2.5 rounded-lg hairline-border text-ink text-xs focus:outline-none">https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT?si=tracking123&utm_source=copy</textarea>
+                                <textarea id="qr-raw-input" rows="3" oninput="updateQrAndSanitizeUrl()" class="w-full bg-stone p-2.5 rounded-lg hairline-border text-ink text-xs focus:outline-none">https://www.youtube.com/watch?v=jfKfPfyJRdk&si=tracking123&utm_source=share</textarea>
                             </div>
                             <div>
                                 <div class="flex items-center justify-between text-[10px] text-muted uppercase mb-1">
@@ -910,12 +962,12 @@
     <footer class="mt-auto hairline-t bg-stone/50">
         <div class="max-w-[1440px] mx-auto px-4 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between font-mono text-[11px] text-muted gap-4">
             <span>© 2026 PHẠM TUẤN TÚ · SYS.2026 SERENE ENGINEERING</span>
-            <span>SPOTIFY ➔ YOUTUBE FULL AUDIO BRIDGE · AUTO-CONSUME QUEUE</span>
+            <span>YOUTUBE · YT MUSIC · SOUNDCLOUD · AUTO-CONSUME QUEUE</span>
         </div>
     </footer>
 
     <!-- =====================================================
-         CORE APPLICATION & LAVALINK AUDIO BRIDGE SCRIPT
+         CORE APPLICATION & MULTI-PLATFORM AUDIO BOT SCRIPT
          ===================================================== -->
     <script>
         /* -----------------------------------------------------
@@ -923,8 +975,8 @@
            ----------------------------------------------------- */
         const STORAGE_PROJECTS_KEY = 'ptt_projects_v6';
         const STORAGE_VERSION_KEY = 'ptt_projects_ver_v6';
-        const STORAGE_DESK_KEY = 'ptt_desk_layout_v6';
-        const STORAGE_QUEUE_KEY = 'ptt_audio_queue_v6';
+        const STORAGE_DESK_KEY = 'ptt_desk_layout_v8_clean3'; // Versioned key to ensure clean 3-card image layout
+        const STORAGE_QUEUE_KEY = 'ptt_audio_queue_v8';
         const ADMIN_SECRET_CMD = 'p2t.206';
         const CLOUD_KV_URL = 'https://kvdb.io/A6Xy9mK4vP2t8Lz1R5wQ3s/ptt_sys2026_projects_v6';
         const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('ptt_realtime_sync_v6') : null;
@@ -1073,7 +1125,7 @@
                                 <p class="text-xs text-muted max-w-2xl">${p.description}</p>
                             </div>
                             <div class="flex items-center gap-2 font-mono text-xs shrink-0">
-                                <a href="${p.link || '#'}" target="_blank" rel="noopener" class="px-3 py-1.5 bg-stone hover:bg-ink hover:text-washi text-ink rounded-lg hairline-border transition-colors">Repo ↗</a>
+                                <a href="${p.link || '#'}" target="_blank" rel="noopener" class="px-3 py-1.5 bg-stone hover:bg-ink hover:text-washi text-ink rounded-lg hairline-border transition-colors">Mở Link ↗</a>
                                 <button type="button" onclick="editProject('${p.id}')" class="admin-only px-3 py-1.5 bg-stone text-ink rounded-lg hairline-border cursor-pointer">✎ Sửa</button>
                                 <button type="button" onclick="deleteProject('${p.id}')" class="admin-only px-3 py-1.5 bg-[#D94E41]/15 text-[#D94E41] rounded-lg border border-[#D94E41]/30 cursor-pointer">⊗ Xóa</button>
                             </div>
@@ -1301,7 +1353,7 @@
         }
 
         /* -----------------------------------------------------
-           3. SPATIAL DESK DRAG & DROP
+           3. SPATIAL DESK DRAG & DROP (CLEAN 3 CARDS WITH IMAGES & LINKS)
            ----------------------------------------------------- */
         function initWorkspaceDesk() {
             const canvas = document.getElementById('desk-canvas');
@@ -1321,6 +1373,7 @@
             canvas.querySelectorAll('.desk-card').forEach(card => {
                 let dragging = false, sx = 0, sy = 0, il = 0, it = 0;
                 const start = (ev) => {
+                    if (ev.target && ev.target.closest('a, button')) return;
                     dragging = true;
                     card.style.zIndex = ++zCounter;
                     card.classList.add('dragging');
@@ -1332,8 +1385,10 @@
                 const move = (ev) => {
                     if (!dragging) return;
                     const pt = ev.touches ? ev.touches[0] : ev;
-                    const nl = Math.min(Math.max(0, il + pt.clientX - sx), canvas.clientWidth - card.offsetWidth);
-                    const nt = Math.min(Math.max(0, it + pt.clientY - sy), canvas.clientHeight - card.offsetHeight);
+                    const maxL = Math.max(12, canvas.clientWidth - card.offsetWidth - 12);
+                    const maxT = Math.max(40, canvas.clientHeight - card.offsetHeight - 12);
+                    const nl = Math.min(Math.max(12, il + pt.clientX - sx), maxL);
+                    const nt = Math.min(Math.max(40, it + pt.clientY - sy), maxT);
                     card.style.left = `${Math.round(nl)}px`;
                     card.style.top = `${Math.round(nt)}px`;
                 };
@@ -1357,50 +1412,58 @@
         }
 
         function tidyWorkspaceDesk() {
-            const layout = {
-                'artifact-1': { left: '36px', top: '48px' },
-                'artifact-2': { left: '340px', top: '48px' },
-                'artifact-3': { left: '36px', top: '230px' },
-                'artifact-4': { left: '340px', top: '230px' }
-            };
+            const canvas = document.getElementById('desk-canvas');
+            const w = canvas ? canvas.clientWidth : 1200;
+            const layout = w < 768
+                ? {
+                    'artifact-1': { left: '16px', top: '44px' },
+                    'artifact-2': { left: '16px', top: '230px' },
+                    'artifact-3': { left: '16px', top: '410px' }
+                }
+                : {
+                    'artifact-1': { left: '36px', top: '52px' },
+                    'artifact-2': { left: '380px', top: '52px' },
+                    'artifact-3': { left: '724px', top: '52px' }
+                };
             Object.keys(layout).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) { el.style.left = layout[id].left; el.style.top = layout[id].top; }
             });
             try { localStorage.setItem(STORAGE_DESK_KEY, JSON.stringify(layout)); } catch (e) {}
-            showToast('⊞ Đã sắp xếp gọn Bàn Làm Việc!');
+            showToast('⊞ Đã sắp xếp gọn 3 thẻ dự án trên Bàn Làm Việc!');
         }
 
         function scatterWorkspaceDesk() {
             const canvas = document.getElementById('desk-canvas');
             if (!canvas) return;
+            const state = {};
             canvas.querySelectorAll('.desk-card').forEach(c => {
                 const maxL = Math.max(20, canvas.clientWidth - c.offsetWidth - 20);
-                const maxT = Math.max(40, canvas.clientHeight - c.offsetHeight - 20);
-                c.style.left = `${Math.floor(20 + Math.random() * maxL)}px`;
-                c.style.top = `${Math.floor(40 + Math.random() * maxT)}px`;
+                const maxT = Math.max(48, canvas.clientHeight - c.offsetHeight - 20);
+                c.style.left = `${Math.floor(16 + Math.random() * maxL)}px`;
+                c.style.top = `${Math.floor(48 + Math.random() * maxT)}px`;
+                state[c.id] = { left: c.style.left, top: c.style.top };
             });
-            showToast('⚄ Đã xáo trộn vị trí thẻ trên bàn!');
+            try { localStorage.setItem(STORAGE_DESK_KEY, JSON.stringify(state)); } catch (e) {}
+            showToast('⚄ Đã xáo trộn vị trí 3 thẻ trên bàn!');
         }
 
         /* =====================================================
-           4. UTILITY 01: LAVALINK-STYLE MULTI-PLATFORM AUDIO BOT
-              - SPOTIFY -> YOUTUBE FULL AUDIO BRIDGE (NO 30s LIMIT!)
-              - ALBUM / PLAYLIST MULTI-TRACK EXTRACTOR
+           4. UTILITY 01: MULTI-PLATFORM AUDIO BOT (NO SPOTIFY)
+              - YOUTUBE, YOUTUBE MUSIC, SOUNDCLOUD, DIRECT AUDIO
+              - 3-TIER TRACK & ALBUM/PLAYLIST SCANNER
               - EPHEMERAL QUEUE (AUTO-DELETE ON FINISH UNLESS LOOP ON)
            ===================================================== */
         const PIPED_NODES = [
             'https://pipedapi.kavin.rocks',
             'https://pipedapi.tokhmi.xyz',
-            'https://pipedapi.syncpundit.io',
-            'https://api.piped.projectsegfault.net'
+            'https://pipedapi.syncpundit.io'
         ];
         const INVIDIOUS_NODES = [
             'https://inv.tux.pizza',
             'https://invidious.nerdvpn.de',
             'https://yewtu.be',
-            'https://inv.nadeko.net',
-            'https://invidious.jing.rocks'
+            'https://inv.nadeko.net'
         ];
 
         let audioQueue = [];
@@ -1417,14 +1480,14 @@
         let miniDeckWin = null;
 
         function initAudioBotEngine() {
-            // Load saved queue
             try {
                 const saved = JSON.parse(localStorage.getItem(STORAGE_QUEUE_KEY) || '[]');
-                if (Array.isArray(saved)) audioQueue = saved;
+                if (Array.isArray(saved)) {
+                    audioQueue = saved.filter(item => item && item.platform !== 'spotify');
+                }
             } catch (e) {}
             renderBotQueue();
 
-            // Setup HTML5 Direct Audio element listeners
             const audioEl = document.getElementById('bot-html5-audio');
             if (audioEl) {
                 audioEl.addEventListener('play', () => {
@@ -1439,13 +1502,11 @@
                 });
             }
 
-            // Load SoundCloud Widget API
             const scScript = document.createElement('script');
             scScript.src = 'https://w.soundcloud.com/player/api.js';
             scScript.async = true;
             document.head.appendChild(scScript);
 
-            // Load YouTube IFrame Player API
             if (!window.YT) {
                 const ytScript = document.createElement('script');
                 ytScript.src = 'https://www.youtube.com/iframe_api';
@@ -1475,11 +1536,24 @@
                             ev.target.setVolume(vol);
                         },
                         onStateChange: (ev) => {
-                            if (ev.data === 1) {
+                            // Harvest playlist items on CUED (5) or PLAYING (1) or BUFFERING (3)
+                            if (ev.data === 5 || ev.data === 1 || ev.data === 3) {
                                 harvestYtPlaylistItemsIfNeeded();
-                                setBotPlayingState(true, activeTrack?.platform === 'spotify'
-                                    ? 'SPOTIFY ⚡ YT FULL AUDIO BRIDGE (100% TRACK)'
-                                    : 'YOUTUBE FULL AUDIO CORE');
+                            }
+                            if (ev.data === 1) {
+                                // Also grab live video title from YT.Player if available
+                                try {
+                                    const vData = ytPlayer.getVideoData && ytPlayer.getVideoData();
+                                    if (vData && vData.title && activeTrack) {
+                                        activeTrack.label = vData.title;
+                                        if (vData.author) activeTrack.author = vData.author;
+                                        document.getElementById('bot-track-title').textContent = activeTrack.label;
+                                        document.getElementById('bot-track-author').textContent = activeTrack.author;
+                                        saveBotQueue();
+                                        renderBotQueue();
+                                    }
+                                } catch (e) {}
+                                setBotPlayingState(true, 'YOUTUBE / YT MUSIC AUDIO ENGINE');
                                 startBotProgressLoop();
                             } else if (ev.data === 2) {
                                 setBotPlayingState(false, 'ĐÃ TẠM DỪNG');
@@ -1488,7 +1562,6 @@
                             }
                         },
                         onError: () => {
-                            // If YT IFrame is blocked in sandbox/VEVO, immediately failover to Direct Audio Stream Node!
                             if (activeTrack && activeTrack.ytId) {
                                 tryDirectAudioNodeStream(activeTrack.ytId);
                             }
@@ -1498,18 +1571,22 @@
             } catch (e) {}
         };
 
-        // Parse any user input (Spotify Track/Album/Playlist, YouTube, YT Music, SoundCloud, Direct Audio, or Search Query)
+        // Parse YouTube, YT Music, SoundCloud, Direct Audio, or Search Query
         function parseBotInput(rawInput) {
             const raw = (rawInput || '').trim();
             if (!raw) return null;
 
-            // Bare 11-char YouTube Video ID
+            // Bare 11-character YouTube Video ID
             if (/^[a-zA-Z0-9_-]{11}$/.test(raw)) {
-                return { platform: 'yt', isCollection: false, id: raw, ytId: raw, url: `https://www.youtube.com/watch?v=${raw}` };
+                return { platform: 'yt', kind: 'track', isCollection: false, id: raw, ytId: raw, url: `https://www.youtube.com/watch?v=${raw}` };
             }
 
-            // If not a URL -> treat as a direct song search query (just like Discord `/play song name`)
-            if (!/^https?:\/\//i.test(raw) && !raw.includes('.com/') && !raw.includes('youtu.be/')) {
+            // Bare YouTube Playlist ID (PL..., OLAK5uy_...)
+            if (/^(PL|OLAK5uy_|UU|FL|RD)[a-zA-Z0-9_-]{10,}$/.test(raw)) {
+                return { platform: 'yt', kind: 'playlist', isCollection: true, listId: raw, ytId: null, id: raw, url: `https://www.youtube.com/playlist?list=${raw}` };
+            }
+
+            if (!/^https?:\/\//i.test(raw) && !raw.includes('.com/') && !raw.includes('youtu.be/') && !raw.includes('soundcloud.')) {
                 return { platform: 'search', isCollection: false, query: raw, url: raw };
             }
 
@@ -1521,24 +1598,13 @@
             const host = u.hostname.toLowerCase();
             const path = u.pathname;
 
-            // 1. SPOTIFY (Track, Album, Playlist) -> Will be bridged to Full YouTube Audio!
+            // Reject Spotify explicitly as requested
             if (host.includes('spotify.com')) {
-                const m = path.match(/\/(track|album|playlist)\/([a-zA-Z0-9]+)/i);
-                if (m) {
-                    const kind = m[1].toLowerCase();
-                    const spId = m[2];
-                    return {
-                        platform: 'spotify',
-                        kind: kind,
-                        isCollection: (kind === 'album' || kind === 'playlist'),
-                        id: spId,
-                        url: `https://open.spotify.com/${kind}/${spId}`
-                    };
-                }
+                return { platform: 'unsupported_spotify' };
             }
 
-            // 2. SOUNDCLOUD (Track or Set/Album)
-            if (host.includes('soundcloud.com')) {
+            // 1. SOUNDCLOUD (Track or Set/Album)
+            if (host.includes('soundcloud.com') || host.includes('on.soundcloud.com')) {
                 const cleanUrl = `${u.origin}${u.pathname}`;
                 const isSet = /\/sets\//i.test(path);
                 return {
@@ -1550,7 +1616,7 @@
                 };
             }
 
-            // 3. YOUTUBE & YOUTUBE MUSIC
+            // 2. YOUTUBE & YOUTUBE MUSIC (Track or Album/Playlist)
             if (host.includes('youtube.com') || host.includes('youtu.be') || host.includes('youtube-nocookie.com')) {
                 const isYtm = host.includes('music.youtube.com');
                 const platform = isYtm ? 'ytmusic' : 'yt';
@@ -1571,7 +1637,8 @@
                     }
                 }
 
-                if (listId && (path.includes('playlist') || !vid || listId.startsWith('OLAK') || listId.startsWith('PL'))) {
+                // If URL has `list=...` (Album / Playlist), treat as Collection so all tracks in the playlist are scanned!
+                if (listId && (path.includes('playlist') || !vid || listId.startsWith('OLAK') || listId.startsWith('PL') || listId.startsWith('RD'))) {
                     return { platform, kind: 'playlist', isCollection: true, listId, ytId: vid || null, id: listId, url: raw };
                 }
                 if (vid) {
@@ -1579,7 +1646,7 @@
                 }
             }
 
-            // 4. DIRECT AUDIO (.mp3, .m4a, .ogg, .wav)
+            // 3. DIRECT AUDIO (.mp3, .m4a, .ogg, .wav, .flac)
             if (/\.(mp3|m4a|ogg|wav|flac|webm)(\?.*)?$/i.test(raw)) {
                 return { platform: 'direct', kind: 'track', isCollection: false, id: raw, url: raw };
             }
@@ -1587,35 +1654,147 @@
             return { platform: 'search', isCollection: false, query: raw, url: raw };
         }
 
-        // LAVALINK SEARCH RESOLVER: Resolve any "Song Title - Artist" into a full-length YouTube Video ID + Metadata
-        async function resolveSearchQueryToYouTubeTrack(searchQuery) {
-            const q = encodeURIComponent(searchQuery + ' official audio');
+        // Fast, rock-solid metadata fetcher for a single YouTube video ID
+        async function fetchYouTubeTrackMetadata(videoId) {
+            const watchUrl = `https://www.youtube.com/watch?v=${videoId}`;
+            // 1. Try noembed.com (fast, CORS-friendly)
+            try {
+                const ctrl = new AbortController();
+                const t = setTimeout(() => ctrl.abort(), 3000);
+                const res = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(watchUrl)}`, { signal: ctrl.signal });
+                clearTimeout(t);
+                if (res.ok) {
+                    const d = await res.json();
+                    if (d && d.title) {
+                        return { title: d.title, author: d.author_name || 'YouTube Audio' };
+                    }
+                }
+            } catch (e) {}
 
-            // 1. Race Piped Search APIs
-            for (const base of PIPED_NODES) {
+            // 2. Fallback to YouTube official oEmbed
+            try {
+                const ctrl = new AbortController();
+                const t = setTimeout(() => ctrl.abort(), 3000);
+                const res = await fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(watchUrl)}&format=json`, { signal: ctrl.signal });
+                clearTimeout(t);
+                if (res.ok) {
+                    const d = await res.json();
+                    if (d && d.title) {
+                        return { title: d.title, author: d.author_name || 'YouTube Audio' };
+                    }
+                }
+            } catch (e) {}
+
+            return null;
+        }
+
+        // Hydrate titles in background for tracks that only have videoId
+        async function hydrateQueueTrackTitles() {
+            let changed = false;
+            for (let i = 0; i < audioQueue.length; i++) {
+                const item = audioQueue[i];
+                if (item && item.ytId && item.needsTitleHydration) {
+                    item.needsTitleHydration = false;
+                    const meta = await fetchYouTubeTrackMetadata(item.ytId);
+                    if (meta && meta.title) {
+                        item.label = meta.title;
+                        item.author = meta.author;
+                        changed = true;
+                        if (activeTrack && activeTrack.uid === item.uid) {
+                            document.getElementById('bot-track-title').textContent = item.label;
+                            document.getElementById('bot-track-author').textContent = item.author;
+                        }
+                        renderBotQueue();
+                    }
+                }
+            }
+            if (changed) saveBotQueue();
+        }
+
+        // TIER-A PLAYLIST SCANNER: Scrape `playlistVideoRenderer` directly from YouTube Playlist page via CORS proxy
+        async function scrapeYouTubePlaylistPage(listId, platform) {
+            const targetUrl = `https://www.youtube.com/playlist?list=${encodeURIComponent(listId)}&hl=vi`;
+            const proxyUrls = [
+                `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`
+            ];
+
+            for (const pUrl of proxyUrls) {
                 try {
                     const ctrl = new AbortController();
-                    const timer = setTimeout(() => ctrl.abort(), 3000);
-                    const res = await fetch(`${base}/search?q=${q}&filter=music_songs`, { signal: ctrl.signal });
+                    const timer = setTimeout(() => ctrl.abort(), 5000);
+                    const res = await fetch(pUrl, { signal: ctrl.signal });
                     clearTimeout(timer);
-                    if (res.ok) {
-                        const data = await res.json();
-                        const first = (data.items || []).find(item => item.url && item.url.includes('v='));
-                        if (first) {
-                            const vid = first.url.split('v=')[1].split('&')[0];
-                            return {
+                    if (!res.ok) continue;
+
+                    let html = '';
+                    if (pUrl.includes('allorigins.win')) {
+                        const json = await res.json();
+                        html = json.contents || '';
+                    } else {
+                        html = await res.text();
+                    }
+                    if (!html) continue;
+
+                    // Extract playlistVideoRenderer blocks or videoId patterns from ytInitialData
+                    const tracks = [];
+                    const seen = new Set();
+                    const regex = /"playlistVideoRenderer":\{"videoId":"([a-zA-Z0-9_-]{11})"[\s\S]*?"title":\{"runs":\[\{"text":"([^"]+)"/g;
+                    let m;
+                    while ((m = regex.exec(html)) !== null && tracks.length < 50) {
+                        const vid = m[1];
+                        const rawTitle = m[2].replace(/\\u0026/g, '&').replace(/\\"/g, '"');
+                        if (!seen.has(vid)) {
+                            seen.add(vid);
+                            tracks.push({
+                                uid: `ytpl-${Date.now()}-${tracks.length}`,
+                                platform: platform || 'yt',
                                 ytId: vid,
-                                title: first.title || searchQuery,
-                                author: first.uploaderName || 'Official Audio',
-                                duration: first.duration || 0,
-                                thumb: first.thumbnail || `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`
-                            };
+                                label: rawTitle,
+                                author: platform === 'ytmusic' ? 'YouTube Music Album' : 'YouTube Playlist',
+                                thumb: `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`,
+                                url: `https://www.youtube.com/watch?v=${vid}`
+                            });
                         }
+                    }
+
+                    if (tracks.length > 0) return tracks;
+                } catch (e) {}
+            }
+            return [];
+        }
+
+        // Search query resolver (for `/play song name`)
+        async function resolveSearchQueryToYouTubeTrack(searchQuery) {
+            const q = encodeURIComponent(searchQuery);
+
+            // 1. Try scraping YouTube search results via AllOrigins / CodeTabs proxy
+            const ytSearchUrl = `https://www.youtube.com/results?search_query=${q}`;
+            const proxies = [
+                `https://api.allorigins.win/get?url=${encodeURIComponent(ytSearchUrl)}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(ytSearchUrl)}`
+            ];
+            for (const pUrl of proxies) {
+                try {
+                    const ctrl = new AbortController();
+                    const timer = setTimeout(() => ctrl.abort(), 4200);
+                    const res = await fetch(pUrl, { signal: ctrl.signal });
+                    clearTimeout(timer);
+                    if (!res.ok) continue;
+                    const text = pUrl.includes('allorigins') ? ((await res.json()).contents || '') : (await res.text());
+                    const m = text.match(/"videoRenderer":\{"videoId":"([a-zA-Z0-9_-]{11})"[\s\S]*?"title":\{"runs":\[\{"text":"([^"]+)"/);
+                    if (m && m[1]) {
+                        return {
+                            ytId: m[1],
+                            title: m[2].replace(/\\u0026/g, '&'),
+                            author: 'YouTube Audio',
+                            thumb: `https://i.ytimg.com/vi/${m[1]}/hqdefault.jpg`
+                        };
                     }
                 } catch (e) {}
             }
 
-            // 2. Fallback Piped general video search
+            // 2. Fallback Piped / Invidious search
             for (const base of PIPED_NODES) {
                 try {
                     const ctrl = new AbortController();
@@ -1631,31 +1810,7 @@
                                 ytId: vid,
                                 title: first.title || searchQuery,
                                 author: first.uploaderName || 'YouTube Audio',
-                                duration: first.duration || 0,
                                 thumb: first.thumbnail || `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`
-                            };
-                        }
-                    }
-                } catch (e) {}
-            }
-
-            // 3. Fallback Invidious Search APIs
-            for (const base of INVIDIOUS_NODES) {
-                try {
-                    const ctrl = new AbortController();
-                    const timer = setTimeout(() => ctrl.abort(), 3000);
-                    const res = await fetch(`${base}/api/v1/search?q=${q}&type=video`, { signal: ctrl.signal });
-                    clearTimeout(timer);
-                    if (res.ok) {
-                        const arr = await res.json();
-                        if (Array.isArray(arr) && arr[0] && arr[0].videoId) {
-                            const first = arr[0];
-                            return {
-                                ytId: first.videoId,
-                                title: first.title || searchQuery,
-                                author: first.author || 'YouTube Audio',
-                                duration: first.lengthSeconds || 0,
-                                thumb: `https://i.ytimg.com/vi/${first.videoId}/hqdefault.jpg`
                             };
                         }
                     }
@@ -1665,122 +1820,25 @@
             return null;
         }
 
-        // Extract Spotify Track Metadata (Title + Artist + Thumbnail) without needing Spotify API keys
-        async function fetchSpotifyMetadata(spotifyUrl, spKind, spId) {
-            let title = '';
-            let artist = '';
-            let thumb = 'https://placehold.co/160x160/4E8752/FFFFFF?text=SPOTIFY';
-
-            // 1. Official Spotify oEmbed (CORS enabled!)
-            try {
-                const res = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(spotifyUrl)}`);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.title) title = data.title;
-                    if (data.thumbnail_url) thumb = data.thumbnail_url;
-                }
-            } catch (e) {}
-
-            // 2. Try scraping full Artist + TrackList from Spotify Embed JSON via AllOrigins CORS proxy
-            let trackItems = [];
-            try {
-                const embedPageUrl = `https://open.spotify.com/embed/${spKind}/${spId}`;
-                const proxyRes = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(embedPageUrl)}`);
-                if (proxyRes.ok) {
-                    const proxyJson = await proxyRes.json();
-                    const html = proxyJson.contents || '';
-                    const match = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/i);
-                    if (match && match[1]) {
-                        const nextData = JSON.parse(match[1]);
-                        const entity = nextData?.props?.pageProps?.state?.data?.entity;
-                        if (entity) {
-                            if (entity.name || entity.title) title = entity.name || entity.title;
-                            if (Array.isArray(entity.artists) && entity.artists[0]?.name) {
-                                artist = entity.artists.map(a => a.name).join(', ');
-                            } else if (entity.subtitle) {
-                                artist = entity.subtitle;
-                            }
-                            if (Array.isArray(entity.trackList) && entity.trackList.length > 0) {
-                                trackItems = entity.trackList.slice(0, 35).map((t, idx) => ({
-                                    title: t.title || `Track #${idx + 1}`,
-                                    artist: t.subtitle || artist || title,
-                                    durationSec: t.duration ? Math.round(t.duration / 1000) : 0
-                                }));
-                            }
-                        }
-                    }
-                }
-            } catch (e) {}
-
-            return { title: title || `Spotify ${spId}`, artist, thumb, trackItems };
-        }
-
-        // Expand any Album / Playlist (Spotify, YouTube, YT Music, SoundCloud) into individual Queue tracks
+        // Build Queue items from parsed descriptor (Single Track or Full Album/Playlist)
         async function buildQueueItemsFromDescriptor(desc) {
             const results = [];
 
-            // A. SPOTIFY TRACK OR ALBUM/PLAYLIST -> BRIDGED TO FULL YOUTUBE AUDIO!
-            if (desc.platform === 'spotify') {
-                showToast('🟢 Đang lấy thông tin từ Spotify và bắc cầu sang bản Full Audio (100% thời lượng)...');
-                const meta = await fetchSpotifyMetadata(desc.url, desc.kind, desc.id);
-
-                if (desc.isCollection && meta.trackItems.length > 0) {
-                    meta.trackItems.forEach((t, idx) => {
-                        results.push({
-                            uid: 'sp-alb-' + Date.now() + '-' + idx,
-                            platform: 'spotify',
-                            searchQuery: `${t.title} ${t.artist}`.trim(),
-                            ytId: null, // Resolved automatically when played
-                            label: `${t.title}${t.artist ? ' — ' + t.artist : ''}`,
-                            author: `${t.artist || meta.title} (SPOTIFY ⚡ FULL AUDIO)`,
-                            thumb: meta.thumb,
-                            url: desc.url
-                        });
-                    });
-                    return results;
-                }
-
-                // Single Spotify track (or album fallback)
-                const searchStr = `${meta.title} ${meta.artist}`.trim();
-                const resolved = await resolveSearchQueryToYouTubeTrack(searchStr);
-                results.push({
-                    uid: 'sp-' + Date.now(),
-                    platform: 'spotify',
-                    searchQuery: searchStr,
-                    ytId: resolved ? resolved.ytId : null,
-                    label: meta.artist ? `${meta.title} — ${meta.artist}` : (resolved ? resolved.title : meta.title),
-                    author: `${meta.artist || (resolved ? resolved.author : 'Spotify')} (SPOTIFY ⚡ FULL AUDIO)`,
-                    thumb: meta.thumb || (resolved ? resolved.thumb : ''),
-                    url: resolved ? `https://www.youtube.com/watch?v=${resolved.ytId}` : desc.url
-                });
-                return results;
-            }
-
-            // B. DIRECT SONG NAME SEARCH
-            if (desc.platform === 'search') {
-                showToast(`🔎 Đang tìm bản Full Audio cho: "${desc.query}"...`);
-                const resolved = await resolveSearchQueryToYouTubeTrack(desc.query);
-                if (resolved) {
-                    results.push({
-                        uid: 'srch-' + Date.now(),
-                        platform: 'yt',
-                        ytId: resolved.ytId,
-                        label: resolved.title,
-                        author: resolved.author,
-                        thumb: resolved.thumb,
-                        url: `https://www.youtube.com/watch?v=${resolved.ytId}`
-                    });
-                }
-                return results;
-            }
-
-            // C. YOUTUBE / YOUTUBE MUSIC PLAYLIST OR ALBUM (`list=...`)
+            // A. YOUTUBE / YOUTUBE MUSIC PLAYLIST OR ALBUM (`list=...`)
             if ((desc.platform === 'yt' || desc.platform === 'ytmusic') && desc.isCollection) {
-                showToast(`💿 Đang tách toàn bộ bài hát trong Album/Playlist (${desc.listId})...`);
+                showToast(`💿 Đang quét danh sách bài hát trong Album/Playlist (${desc.listId})...`);
+
+                // Tier 1: Direct YouTube Playlist Page Scraper via CORS proxy
+                const scraped = await scrapeYouTubePlaylistPage(desc.listId, desc.platform);
+                if (scraped.length > 0) {
+                    return scraped;
+                }
+
+                // Tier 2: Piped Playlist API fallback
                 for (const base of PIPED_NODES) {
                     try {
                         const ctrl = new AbortController();
-                        const timer = setTimeout(() => ctrl.abort(), 3200);
+                        const timer = setTimeout(() => ctrl.abort(), 3000);
                         const res = await fetch(`${base}/playlists/${encodeURIComponent(desc.listId)}`, { signal: ctrl.signal });
                         clearTimeout(timer);
                         if (res.ok) {
@@ -1806,51 +1864,60 @@
                     } catch (e) {}
                 }
 
-                // Fallback: load native playlist in YT.Player and harvest IDs
+                // Tier 3: Native YT.Player Playlist Harvester (guaranteed fallback)
+                let seedLabel = `Album / Playlist (${desc.listId})`;
+                let seedAuthor = desc.platform === 'ytmusic' ? 'YouTube Music Album' : 'YouTube Playlist';
+                if (desc.ytId) {
+                    const meta = await fetchYouTubeTrackMetadata(desc.ytId);
+                    if (meta) {
+                        seedLabel = meta.title;
+                        seedAuthor = meta.author;
+                    }
+                }
                 results.push({
                     uid: 'ytpl-native-' + Date.now(),
                     platform: desc.platform,
-                    ytId: desc.ytId || desc.listId,
+                    ytId: desc.ytId || null,
                     listId: desc.listId,
                     needsNativePlaylistHarvest: true,
-                    label: `Album / Playlist (${desc.listId})`,
-                    author: 'YouTube Album',
+                    label: seedLabel,
+                    author: seedAuthor,
                     thumb: desc.ytId ? `https://i.ytimg.com/vi/${desc.ytId}/hqdefault.jpg` : 'https://placehold.co/160x160/C85A32/FFFFFF?text=ALBUM',
                     url: desc.url
                 });
                 return results;
             }
 
-            // D. SINGLE YOUTUBE / YOUTUBE MUSIC TRACK
+            // B. SINGLE YOUTUBE / YOUTUBE MUSIC TRACK
             if (desc.platform === 'yt' || desc.platform === 'ytmusic') {
                 const item = {
-                    uid: 'yt-' + Date.now(),
+                    uid: 'yt-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
                     platform: desc.platform,
                     ytId: desc.ytId,
-                    label: `YouTube Track (${desc.ytId})`,
+                    label: `Đang tải tiêu đề (${desc.ytId})...`,
                     author: desc.platform === 'ytmusic' ? 'YouTube Music' : 'YouTube Audio',
                     thumb: `https://i.ytimg.com/vi/${desc.ytId}/hqdefault.jpg`,
                     url: `https://www.youtube.com/watch?v=${desc.ytId}`
                 };
-                try {
-                    const res = await fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${desc.ytId}`);
-                    if (res.ok) {
-                        const d = await res.json();
-                        if (d.title) item.label = d.title;
-                        if (d.author_name) item.author = d.author_name;
-                    }
-                } catch (e) {}
+                const meta = await fetchYouTubeTrackMetadata(desc.ytId);
+                if (meta && meta.title) {
+                    item.label = meta.title;
+                    item.author = meta.author;
+                } else {
+                    item.label = `YouTube Audio Track (${desc.ytId})`;
+                    item.needsTitleHydration = true;
+                }
                 results.push(item);
                 return results;
             }
 
-            // E. SOUNDCLOUD TRACK OR SET/ALBUM
+            // C. SOUNDCLOUD TRACK OR SET/ALBUM
             if (desc.platform === 'soundcloud') {
                 let title = desc.isCollection ? 'SoundCloud Album / Set' : 'SoundCloud Track';
                 let author = 'SoundCloud';
                 let thumb = 'https://placehold.co/160x160/C85A32/FFFFFF?text=SC';
                 try {
-                    const res = await fetch(`https://soundcloud.com/oembed?format=json&url=${encodeURIComponent(desc.url)}`);
+                    const res = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(desc.url)}`);
                     if (res.ok) {
                         const d = await res.json();
                         if (d.title) title = d.title;
@@ -1870,75 +1937,73 @@
                 return results;
             }
 
-            // F. DIRECT AUDIO (.mp3 / .m4a / .ogg)
+            // D. DIRECT AUDIO (.mp3 / .m4a / .ogg)
             if (desc.platform === 'direct') {
                 results.push({
                     uid: 'dir-' + Date.now(),
                     platform: 'direct',
-                    label: desc.url.split('/').pop().split('?')[0] || 'Direct Audio Stream',
-                    author: 'HTML5 Direct Stream',
-                    thumb: 'https://placehold.co/160x160/3A5F6F/FFFFFF?text=MP3',
+                    label: decodeURIComponent(desc.url.split('/').pop().split('?')[0] || 'Direct Audio Stream'),
+                    author: 'HTML5 Direct Audio',
+                    thumb: 'https://placehold.co/160x160/3A5F6F/FFFFFF?text=AUDIO',
                     url: desc.url
                 });
+                return results;
+            }
+
+            // E. SONG NAME SEARCH QUERY
+            if (desc.platform === 'search') {
+                showToast(`🔎 Đang quét bài hát: "${desc.query}"...`);
+                const resolved = await resolveSearchQueryToYouTubeTrack(desc.query);
+                if (resolved && resolved.ytId) {
+                    results.push({
+                        uid: 'srch-' + Date.now(),
+                        platform: 'yt',
+                        ytId: resolved.ytId,
+                        label: resolved.title,
+                        author: resolved.author,
+                        thumb: resolved.thumb,
+                        url: `https://www.youtube.com/watch?v=${resolved.ytId}`
+                    });
+                }
+                return results;
             }
 
             return results;
         }
 
-        // Play a specific track object (resolving Spotify -> YouTube Full Audio on the fly if needed!)
+        // Play a specific track object
         async function playBotTrack(track) {
             if (!track) return;
             stopAllBotEngines();
             activeTrack = track;
 
-            // Update UI Deck Header
             document.getElementById('bot-track-title').textContent = track.label;
             document.getElementById('bot-track-author').textContent = track.author || track.platform.toUpperCase();
             document.getElementById('bot-cover-img').src = track.thumb || 'https://placehold.co/160x160/1C1B19/ECEAE4?text=AUDIO';
-            document.getElementById('bot-bridge-badge').textContent = track.platform === 'spotify'
-                ? '🟢 SPOTIFY ⚡ YT FULL AUDIO'
-                : `${track.platform.toUpperCase()} ENGINE`;
+            document.getElementById('bot-bridge-badge').textContent = `${track.platform.toUpperCase()} ENGINE`;
 
             renderBotQueue();
 
-            // 1. If this is a Spotify track whose YouTube videoId hasn't been resolved yet, resolve it now!
-            if (track.platform === 'spotify' && !track.ytId && track.searchQuery) {
-                document.getElementById('bot-engine-log').textContent = `ĐANG BẮC CẦU SPOTIFY SANG BẢN FULL AUDIO: "${track.searchQuery}"...`;
-                const resolved = await resolveSearchQueryToYouTubeTrack(track.searchQuery);
-                if (resolved && resolved.ytId) {
-                    track.ytId = resolved.ytId;
-                    track.url = `https://www.youtube.com/watch?v=${resolved.ytId}`;
-                    saveBotQueue();
-                } else {
-                    showToast('⚠ Không tìm thấy node tự động, đang mở Mini-Deck hỗ trợ...');
-                    openDetachedMiniDeck(`https://www.youtube.com/results?search_query=${encodeURIComponent(track.searchQuery)}`);
-                    return;
-                }
-            }
-
-            // Sync detached mini window if already open
+            // Sync detached mini window if open
             if (miniDeckWin && !miniDeckWin.closed && track.url) {
                 try { miniDeckWin.location.href = track.url; } catch (e) {}
             }
 
-            // 2. Play YouTube / YT Music / Bridged Spotify Full Track
+            // 1. Play YouTube / YT Music Track or Playlist
             if (track.ytId || track.listId) {
                 document.getElementById('sc-bridge-drawer').classList.add('hidden');
 
-                // Try YT.Player Core first, and simultaneously prepare Direct Audio Stream fallback
                 if (ytReady && ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
                     const vol = parseInt(document.getElementById('bot-vol-slider')?.value || '85', 10);
                     ytPlayer.unMute();
                     ytPlayer.setVolume(vol);
                     if (track.listId && track.needsNativePlaylistHarvest && typeof ytPlayer.loadPlaylist === 'function') {
                         ytPlayer.loadPlaylist({ list: track.listId, listType: 'playlist', index: 0 });
-                    } else {
+                    } else if (track.ytId) {
                         ytPlayer.loadVideoById({ videoId: track.ytId, startSeconds: 0 });
                     }
                     ytPlayer.playVideo();
-                    setBotPlayingState(true, track.platform === 'spotify'
-                        ? '🟢 SPOTIFY ⚡ YT FULL AUDIO BRIDGE (100% CẢ BÀI)'
-                        : 'YOUTUBE FULL AUDIO STREAM');
+                    setBotPlayingState(true, 'YOUTUBE / YT MUSIC AUDIO STREAM');
                     startBotProgressLoop();
                 } else if (track.ytId) {
                     tryDirectAudioNodeStream(track.ytId);
@@ -1946,7 +2011,7 @@
                 return;
             }
 
-            // 3. Play SoundCloud Track or Set (and expand Set tracks into Queue)
+            // 2. Play SoundCloud Track or Set/Album (and expand Set tracks into Queue)
             if (track.platform === 'soundcloud') {
                 const drawer = document.getElementById('sc-bridge-drawer');
                 const mount = document.getElementById('sc-bridge-mount');
@@ -1960,9 +2025,14 @@
                         scWidget.play();
                         if (track.isScSet) {
                             scWidget.getSounds((sounds) => {
-                                if (Array.isArray(sounds) && sounds.length > 1) {
+                                if (Array.isArray(sounds) && sounds.length > 0) {
                                     track.isScSet = false;
-                                    sounds.slice(1, 30).forEach((s, idx) => {
+                                    // Update first track title
+                                    if (sounds[0] && sounds[0].title) {
+                                        track.label = sounds[0].title;
+                                        document.getElementById('bot-track-title').textContent = track.label;
+                                    }
+                                    sounds.slice(1, 35).forEach((s, idx) => {
                                         if (s && s.permalink_url) {
                                             audioQueue.push({
                                                 uid: 'sc-sub-' + Date.now() + '-' + idx,
@@ -1976,7 +2046,7 @@
                                     });
                                     saveBotQueue();
                                     renderBotQueue();
-                                    showToast(`💿 Đã nạp thêm ${sounds.length - 1} bài từ SoundCloud Set vào Queue!`);
+                                    showToast(`💿 Đã quét & nạp ${sounds.length} bài từ SoundCloud Album/Set vào Queue!`);
                                 }
                             });
                         }
@@ -1992,7 +2062,7 @@
                 return;
             }
 
-            // 4. Play Direct Audio (.mp3 / .m4a / .ogg)
+            // 3. Play Direct Audio (.mp3 / .m4a / .ogg)
             if (track.platform === 'direct') {
                 document.getElementById('sc-bridge-drawer').classList.add('hidden');
                 const audioEl = document.getElementById('bot-html5-audio');
@@ -2001,7 +2071,6 @@
             }
         }
 
-        // Direct HTML5 Audio Stream Resolver via Invidious / Piped Proxy Relay (Used when YT IFrame is blocked in Sandbox/VEVO)
         async function tryDirectAudioNodeStream(videoId) {
             if (!videoId) return;
             const audioEl = document.getElementById('bot-html5-audio');
@@ -2028,32 +2097,42 @@
             }
         }
 
+        // Harvest all videoIds from YT.Player native playlist and hydrate their titles via noembed
         function harvestYtPlaylistItemsIfNeeded() {
             if (!ytReady || !ytPlayer || typeof ytPlayer.getPlaylist !== 'function') return;
             if (!activeTrack || !activeTrack.needsNativePlaylistHarvest) return;
             try {
                 const ids = ytPlayer.getPlaylist();
-                if (Array.isArray(ids) && ids.length > 1) {
+                if (Array.isArray(ids) && ids.length > 0) {
                     activeTrack.needsNativePlaylistHarvest = false;
-                    ids.slice(1, 35).forEach((vid, idx) => {
-                        audioQueue.push({
-                            uid: 'ytharv-' + Date.now() + '-' + idx,
-                            platform: activeTrack.platform || 'yt',
-                            ytId: vid,
-                            label: `Album Track #${idx + 2} (${vid})`,
-                            author: activeTrack.author || 'YouTube Album',
-                            thumb: `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`,
-                            url: `https://www.youtube.com/watch?v=${vid}`
-                        });
+                    activeTrack.ytId = ids[0];
+                    activeTrack.thumb = `https://i.ytimg.com/vi/${ids[0]}/hqdefault.jpg`;
+                    activeTrack.url = `https://www.youtube.com/watch?v=${ids[0]}`;
+                    activeTrack.needsTitleHydration = true;
+
+                    ids.slice(1, 40).forEach((vid, idx) => {
+                        if (!audioQueue.some(item => item.ytId === vid)) {
+                            audioQueue.push({
+                                uid: 'ytharv-' + Date.now() + '-' + idx,
+                                platform: activeTrack.platform || 'yt',
+                                ytId: vid,
+                                needsTitleHydration: true,
+                                label: `Đang quét tên bài #${idx + 2} (${vid})...`,
+                                author: activeTrack.author || 'YouTube Album',
+                                thumb: `https://i.ytimg.com/vi/${vid}/hqdefault.jpg`,
+                                url: `https://www.youtube.com/watch?v=${vid}`
+                            });
+                        }
                     });
                     saveBotQueue();
                     renderBotQueue();
-                    showToast(`💿 Đã tách thêm ${ids.length - 1} bài từ Playlist vào Queue!`);
+                    showToast(`💿 Đã quét được ${ids.length} bài từ Album/Playlist vào Queue!`);
+                    hydrateQueueTrackTitles();
                 }
             } catch (e) {}
         }
 
-        // EPHEMERAL QUEUE HANDLER: When a track finishes, delete it from Queue unless Loop is ON!
+        // EPHEMERAL QUEUE HANDLER: Delete finished track from Queue unless Loop is ON!
         function onBotTrackFinished() {
             if (botLoop && activeTrack) {
                 showToast(`🔁 Phát lặp lại: ${activeTrack.label}`);
@@ -2111,7 +2190,7 @@
             if (btn) btn.textContent = playing ? '⏸ Tạm Dừng' : '▶ Phát';
             if (pill) {
                 pill.innerHTML = playing
-                    ? '<span class="w-1.5 h-1.5 rounded-full bg-[#4E8752] animate-ping"></span><span class="text-olive font-semibold">PLAYING // FULL AUDIO</span>'
+                    ? '<span class="w-1.5 h-1.5 rounded-full bg-[#4E8752] animate-ping"></span><span class="text-olive font-semibold">PLAYING // AUDIO ACTIVE</span>'
                     : '<span class="w-1.5 h-1.5 rounded-full bg-clay"></span><span>PAUSED / READY</span>';
             }
             if (logEl && logText) logEl.textContent = logText;
@@ -2151,16 +2230,21 @@
         async function processBotInput(raw, playNow) {
             const desc = parseBotInput(raw);
             if (!desc) {
-                showToast('Vui lòng dán link Spotify, YouTube, SoundCloud hoặc nhập tên bài hát!');
+                showToast('Vui lòng dán link YouTube, YT Music, SoundCloud hoặc nhập tên bài hát!');
                 return;
             }
+            if (desc.platform === 'unsupported_spotify') {
+                showToast('⚠ Đã gỡ bỏ Spotify theo yêu cầu. Vui lòng dán link YouTube, YT Music hoặc SoundCloud!');
+                return;
+            }
+
             const btn = document.getElementById('bot-submit-btn');
             if (btn) btn.textContent = '⏳ Đang quét...';
 
             try {
                 const tracks = await buildQueueItemsFromDescriptor(desc);
                 if (tracks.length === 0) {
-                    showToast('Không tìm thấy bài hát phù hợp. Hãy thử link khác!');
+                    showToast('Không quét được bài hát từ đường dẫn này. Hãy thử link YouTube / SoundCloud khác!');
                     return;
                 }
                 if (playNow) {
@@ -2174,14 +2258,15 @@
                 renderBotQueue();
 
                 if (tracks.length > 1) {
-                    showToast(`💿 Đã tách & thêm ${tracks.length} bài hát từ Album/Playlist vào Queue!`);
+                    showToast(`💿 Đã quét & nạp ${tracks.length} bài hát từ Album/Playlist vào Queue!`);
                 } else {
-                    showToast(`🎵 Đã nạp: ${tracks[0].label}`);
+                    showToast(`🎵 Đã quét xong: ${tracks[0].label}`);
                 }
 
                 if (playNow || !activeTrack) {
                     playBotTrack(audioQueue[currentQueueIdx]);
                 }
+                hydrateQueueTrackTitles();
             } finally {
                 if (btn) btn.textContent = '▶ Phát Ngay';
             }
@@ -2216,7 +2301,7 @@
                     currentQueueIdx = 0;
                     playBotTrack(audioQueue[0]);
                 } else {
-                    showToast('Hàng chờ đang trống. Hãy dán link Spotify / YouTube vào ô /play!');
+                    showToast('Hàng chờ đang trống. Hãy dán link YouTube / YT Music / SoundCloud vào ô /play!');
                 }
                 return;
             }
@@ -2357,7 +2442,7 @@
             activeTrack = null;
             stopAllBotEngines();
             saveBotQueue();
-            document.getElementById('bot-track-title').textContent = 'Chưa có bài hát — Dán link Spotify / YouTube / SoundCloud vào /play';
+            document.getElementById('bot-track-title').textContent = 'Chưa có bài hát — Dán link YouTube / YT Music / SoundCloud vào /play';
             document.getElementById('bot-time-cur').textContent = '00:00';
             document.getElementById('bot-time-dur').textContent = '00:00';
             document.getElementById('bot-scrubber').value = 0;
@@ -2372,13 +2457,13 @@
             if (!listEl) return;
 
             if (audioQueue.length === 0) {
-                listEl.innerHTML = `<div class="p-3.5 bg-washi rounded-lg hairline-border text-[11px] text-muted text-center">Hàng chờ trống. Dán link <strong>Spotify (Track/Album)</strong>, <strong>YouTube</strong>, <strong>YT Music</strong> hoặc <strong>SoundCloud</strong> vào <code class="text-clay">/play</code> để phát Full cả bài.</div>`;
+                listEl.innerHTML = `<div class="p-3.5 bg-washi rounded-lg hairline-border text-[11px] text-muted text-center">Hàng chờ trống. Dán link <strong>YouTube</strong>, <strong>YT Music (Track/Playlist)</strong> hoặc <strong>SoundCloud</strong> vào <code class="text-clay">/play</code> để quét bài hát.</div>`;
                 return;
             }
 
             listEl.innerHTML = audioQueue.map((item, idx) => {
                 const isCur = activeTrack && activeTrack.uid === item.uid;
-                const badgeText = item.platform === 'spotify' ? 'SPOTIFY⚡FULL' : item.platform.toUpperCase();
+                const badgeText = item.platform === 'ytmusic' ? 'YT MUSIC' : item.platform.toUpperCase();
                 return `
                     <div onclick="currentQueueIdx=${idx}; playBotTrack(audioQueue[${idx}]);" class="px-3 py-2 rounded-lg hairline-border flex items-center justify-between gap-2 cursor-pointer transition-colors ${isCur ? 'bg-ink text-washi' : 'bg-washi hover:bg-sand text-ink'}">
                         <div class="flex items-center space-x-2 min-w-0">
